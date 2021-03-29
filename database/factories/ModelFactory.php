@@ -11,9 +11,11 @@
 |
 */
 
-$factory->define(App\User::class, function (Faker\Generator $faker) {
-    return [
-        'name' => $faker->name,
-        'email' => $faker->email,
-    ];
+$factory->define(App\Models\User::class, function (Faker\Generator $faker) {
+  return [
+    'name' => $faker->name,
+    'email' => $faker->email,
+    'password' => $faker->name,
+    'api_key' => $faker->sha256
+  ];
 });
