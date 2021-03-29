@@ -11,6 +11,15 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
+// $router->get('/', function () use ($router) {
+//     return $router->app->version();
+// });
+
+$router->group(['prefix' => 'api'], function () use ($router) {
+  $router->post('register/','UserController@register');
+  $router->post('login/','UserController@authenticate');
+  $router->post('item/','ItemController@store');
+  $router->post('order/','OrderController@store');
+  $router->put('order/{id}/cancel/','OrderController@cancel');
+  $router->post('item/{id}/stock/','ItemController@updateStock');
 });
